@@ -1,7 +1,9 @@
-import clickArea from './components/clickArea'
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
 
+const element = <Welcome name="Sara" />;
 ReactDOM.render(
-  clickArea,
-  <h1>Jeff217025818</h1>,
+  element,
   document.getElementById('root')
 );
