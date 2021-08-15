@@ -11,12 +11,12 @@ function clickArea3(){
   return <div>3</div>
 }
 
-const clickArea = <clickArea />
-const clickArea2 = <clickArea2 />
-const clickArea3 = <clickArea3 />
+const element1 = <clickArea />
+const element2 = <clickArea2 />
+const element3 = <clickArea3 />
 ReactDOM.render(
-  clickArea,
-  clickArea2,
-  clickArea3,
+  element1,
+  element2,
+  element3,
   document.getElementById('root')
 );
