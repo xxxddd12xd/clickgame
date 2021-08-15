@@ -3,13 +3,8 @@ function Welcome(props) {
 }
 
 
-
-const element = <Welcome name="1" />;
-const element2 = <Welcome name="2" />;
-const element3 = <Welcome name="3" />;
+const element = <Welcome name="Sara" />;
 ReactDOM.render(
   element,
-  element2,
-  element3,
   document.getElementById('root')
 );
