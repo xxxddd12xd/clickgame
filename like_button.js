@@ -1,4 +1,4 @@
-import clickArea from './components'
+import clickArea from './components/clickArea'
 
 ReactDOM.render(
   clickArea,
