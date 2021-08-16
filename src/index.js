@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import MyCard from './components/ClickArea';
 
+
 function App() {
   return (
     <div>
@@ -19,3 +20,9 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+var clickAmount=0
+
+document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("click",function(){
+  clickAmount+=1
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次";})
