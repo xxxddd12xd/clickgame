@@ -1,4 +1,4 @@
-import { Card } from 'https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js';
+import { Card } from 'react-bootstrap';
 
 
 function Welcome(props) {
