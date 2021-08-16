@@ -1,4 +1,4 @@
-import { Card } from 'react-bootstrap';
+<script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
 
 
 function Welcome(props) {
