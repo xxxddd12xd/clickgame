@@ -1,4 +1,5 @@
-<script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
+import { Card } from 'react-bootstrap';
+
 
 function Welcome(props) {
   return <Card style={{ width: '18rem' }}>
