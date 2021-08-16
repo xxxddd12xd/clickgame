@@ -1,4 +1,5 @@
-#how to deploy
+# how to deploy
 git add --all
 git commit -m "Initial"
 git push
+npm run deploy
