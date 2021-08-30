@@ -7,9 +7,9 @@ import MyCard from './components/ClickArea';
 function App() {
   return (
     <div>
-  <MyCard title="肉便區"/>
+  <MyCard title="左邊"/>
   <MyCard title="點擊區"/>
-  <MyCard title="超級肉便區"/>
+  <MyCard title="右邊"/>
     </div>
   );
 }
