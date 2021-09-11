@@ -1,4 +1,4 @@
-import {Card,Button} from 'react-bootstrap'
+import {Card,Button, Container} from 'react-bootstrap'
 
 
 function Left(props) {
@@ -47,17 +47,30 @@ function MyCard(props) {
               <Card.Text>
                 一些升級資訊
               </Card.Text>
-              <Card style={{ backgroundColor:'gray' }}>
-                <div className="container"style={{ height: '30px' }}>
-                  <div className="row">
-                    <div  className="col-sm">每秒多屁一次</div>
+              <Container className="upgradeContainer">
+                <Card className="upgrade1"style={{ backgroundColor:'gray' }}>
+                  <div className="container"style={{ height: '30px' }}>
+                    <div className="row">
+                      <div  className="col-sm">每秒多屁一次</div>
+                      <div  className="col-sm cost">{props.detail[0]}ϝ</div>
                       <div  className="col-sm-2">
-                      <Button type="button"className="col p-1 btn-sm "variant="primary">Buy</Button>
+                        <Button type="button"className="col p-1 btn-sm upgradeButton"variant="primary">Buy</Button>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-              </Card>
+                </Card>
+                <Card className="d-none upgrade2"style={{ backgroundColor:'gray' }}>
+                  <div className="container"style={{ height: '30px' }}>
+                    <div className="row">
+                      <div  className="col-sm">第二個升級</div>
+                      <div  className="col-sm cost">{props.detail[1]}ϝ</div>
+                      <div  className="col-sm-2">
+                        <Button type="button"className="col p-1 btn-sm upgradeButton"variant="primary">Buy</Button>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </Container>
             </Card.Body>
         </Card>
       </div>
