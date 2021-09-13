@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Left,MyCard,Upgrades} from './components/ClickArea';
+import {Left,MyCard,Upgrades,Upgrade_detail} from './components/ClickArea';
 
 try{
   var clickAmount=JSON.parse(document.cookie)[0].clickAmount
@@ -11,21 +11,22 @@ try{
 }
 catch(e)
 {
-  var clickAmount=0
-  var autoClick=0
-  var upgrade_status=0
-  costList=[15,100]
+  clickAmount=0
+  autoClick=0
+  upgrade_status=0
+  costList=[15,100,1100]
 }
 
-
-function App() {
-  return (
-    <div>
-  <Left title="左邊"/>
-  <MyCard title="點擊區" text={clickAmount}auto={autoClick}/>
-  <Upgrades title="右邊" detail={costList}/>
-    </div>
-  );
+class App extends React.Component{
+  render(){
+    return(
+      <div>
+      <Left title="左邊"/>
+      <MyCard title="點擊區" text={clickAmount} auto={autoClick}/>
+      <Upgrades title="右邊" autoPerSec={[1,2,8]} detail={costList}/>
+        </div>
+    )
+  }
 }
 
 
@@ -74,7 +75,20 @@ document.querySelectorAll(".upgradeButton")[0].addEventListener("click",function
   document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
   // console.log(autoClick)
-  document.querySelector(".upgrade2").classList.remove("d-none")
+  document.querySelectorAll(".upgrade_detail")[1].classList.remove("d-none")
+})
+
+//自動屁升級2
+document.querySelectorAll(".upgradeButton")[1].addEventListener("click",function(){
+  autoClick+=2
+  upgrade_status=2
+  clickAmount-=costList[1]
+  costList[1]=Math.ceil(costList[1]*1.15)
+  document.querySelectorAll(".cost")[1].innerText=costList[1]+'ϝ'
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  ifCanUpgrade()
+  // console.log(autoClick)
+  document.querySelectorAll(".upgrade_detail")[2].classList.remove("d-none")
 })
 
 //自動屁
