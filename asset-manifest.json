@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/clickgame/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/clickgame/static/js/main.c888a01c.chunk.js",
-    "main.js.map": "/clickgame/static/js/main.c888a01c.chunk.js.map",
+    "main.js": "/clickgame/static/js/main.5723bb22.chunk.js",
+    "main.js.map": "/clickgame/static/js/main.5723bb22.chunk.js.map",
     "runtime-main.js": "/clickgame/static/js/runtime-main.13d14c4b.js",
     "runtime-main.js.map": "/clickgame/static/js/runtime-main.13d14c4b.js.map",
     "static/js/2.bbe851cb.chunk.js": "/clickgame/static/js/2.bbe851cb.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.13d14c4b.js",
     "static/js/2.bbe851cb.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.c888a01c.chunk.js"
+    "static/js/main.5723bb22.chunk.js"
   ]
 }
