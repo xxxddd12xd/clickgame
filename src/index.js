@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Left,MyCard,Upgrades,Upgrade_detail} from './components/ClickArea';
+import {Left,MyCard,Upgrades} from './components/ClickArea';
 
 try{
   var clickAmount=JSON.parse(document.cookie)[0].clickAmount
   var autoClick=JSON.parse(document.cookie)[0].autoClick
   var upgrade_status=JSON.parse(document.cookie)[0].upgrade_status
   var costList=JSON.parse(document.cookie)[0].costList
+  var autoPerSec=[1,2,8,47]
 }
 catch(e)
 {
   clickAmount=0
   autoClick=0
   upgrade_status=0
-  costList=[15,100,1100]
+  costList=[15,100,1100,12000]
+  autoPerSec=[1,2,8,47]
 }
 
 class App extends React.Component{
@@ -23,7 +25,7 @@ class App extends React.Component{
       <div>
       <Left title="左邊"/>
       <MyCard title="點擊區" text={clickAmount} auto={autoClick}/>
-      <Upgrades title="右邊" autoPerSec={[1,2,8]} detail={costList}/>
+      <Upgrades title="右邊" autoPerSec={autoPerSec} detail={costList}/>
         </div>
     )
   }
@@ -74,7 +76,6 @@ document.querySelectorAll(".upgradeButton")[0].addEventListener("click",function
   document.querySelectorAll(".cost")[0].innerText=costList[0]+'ϝ'
   document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
-  // console.log(autoClick)
   document.querySelectorAll(".upgrade_detail")[1].classList.remove("d-none")
 })
 
@@ -87,8 +88,19 @@ document.querySelectorAll(".upgradeButton")[1].addEventListener("click",function
   document.querySelectorAll(".cost")[1].innerText=costList[1]+'ϝ'
   document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
-  // console.log(autoClick)
   document.querySelectorAll(".upgrade_detail")[2].classList.remove("d-none")
+})
+
+//自動屁升級3
+document.querySelectorAll(".upgradeButton")[2].addEventListener("click",function(){
+  autoClick+=8
+  upgrade_status=3
+  clickAmount-=costList[2]
+  costList[2]=Math.ceil(costList[2]*1.15)
+  document.querySelectorAll(".cost")[2].innerText=costList[2]+'ϝ'
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  ifCanUpgrade()
+  document.querySelectorAll(".upgrade_detail")[3].classList.remove("d-none")
 })
 
 //自動屁
@@ -100,7 +112,7 @@ function myAlert() {
   ifCanUpgrade()
 }
 //存檔(每一分鐘)
-var saveTimer= setInterval(save,6000)
+var saveTimer= setInterval(save,60000)
 function save(){
   var info=[{clickAmount:clickAmount,autoClick:autoClick,upgrade_status:upgrade_status,costList:costList}]
   var info_json=JSON.stringify(info)

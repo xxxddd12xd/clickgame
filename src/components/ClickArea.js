@@ -39,7 +39,7 @@ function MyCard(props) {
 class Upgrade_detail extends React.Component{
   render(){
     return(
-    <Card className="upgrade_detail"style={{ backgroundColor:'gray' }}>
+    <Card className="upgrade_detail d-none"style={{ backgroundColor:'gray' }}>
       <div className="container"style={{ height: '30px' }}>
         <div className="row">
           <div  className="col-sm">每秒多屁{this.props.order}次</div>
@@ -70,6 +70,7 @@ class Upgrades extends React.Component{
               <Upgrade_detail order={this.props.autoPerSec[0]} detail={this.props.detail[0]}/>
               <Upgrade_detail order={this.props.autoPerSec[1]} detail={this.props.detail[1]}/>
               <Upgrade_detail order={this.props.autoPerSec[2]} detail={this.props.detail[2]}/>
+              <Upgrade_detail order={this.props.autoPerSec[3]} detail={this.props.detail[3]}/>
             </Container>
           </Card.Body>
       </Card>
@@ -79,4 +80,4 @@ class Upgrades extends React.Component{
 }
 
 
-export {Left,MyCard,Upgrades,Upgrade_detail}
+export {Left,MyCard,Upgrades}
