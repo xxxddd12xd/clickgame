@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Left,MyCard,Upgrades} from './components/ClickArea';
+import {Left,MyCard,Upgrades,Footer} from './components/ClickArea';
 
 try{
   var clickAmount=JSON.parse(document.cookie)[0].clickAmount
@@ -26,7 +26,8 @@ class App extends React.Component{
       <Left title="左邊"/>
       <MyCard title="點擊區" text={clickAmount} auto={autoClick}/>
       <Upgrades title="右邊" autoPerSec={autoPerSec} detail={costList}/>
-        </div>
+      <Footer></Footer>
+      </div>
     )
   }
 }
