@@ -25,7 +25,7 @@ class App extends React.Component{
       <div>
       <Left title="左邊"/>
       <MyCard title="點擊區" text={clickAmount} auto={autoClick}/>
-      <Upgrades title="右邊" autoPerSec={autoPerSec} detail={costList}/>
+      <Upgrades title="升級" autoPerSec={autoPerSec} detail={costList}/>
       <Footer></Footer>
       </div>
     )
@@ -65,7 +65,7 @@ function ifCanUpgrade(){
 document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("click",function(){
   clickAmount=parseInt(clickAmount,10)
   clickAmount+=1
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
 })
 //自動屁升級1
@@ -75,7 +75,7 @@ document.querySelectorAll(".upgradeButton")[0].addEventListener("click",function
   clickAmount-=costList[0]
   costList[0]=Math.ceil(costList[0]*1.15)
   document.querySelectorAll(".cost")[0].innerText=costList[0]+'ϝ'
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
   document.querySelectorAll(".upgrade_detail")[1].classList.remove("d-none")
 })
@@ -87,7 +87,7 @@ document.querySelectorAll(".upgradeButton")[1].addEventListener("click",function
   clickAmount-=costList[1]
   costList[1]=Math.ceil(costList[1]*1.15)
   document.querySelectorAll(".cost")[1].innerText=costList[1]+'ϝ'
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
   document.querySelectorAll(".upgrade_detail")[2].classList.remove("d-none")
 })
@@ -99,7 +99,7 @@ document.querySelectorAll(".upgradeButton")[2].addEventListener("click",function
   clickAmount-=costList[2]
   costList[2]=Math.ceil(costList[2]*1.15)
   document.querySelectorAll(".cost")[2].innerText=costList[2]+'ϝ'
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
   document.querySelectorAll(".upgrade_detail")[3].classList.remove("d-none")
 })
@@ -109,7 +109,7 @@ var clicksPerSecond = setInterval(myAlert, 1000);
 function myAlert() {
   // console.log('1秒鐘到了！,每秒+'+autoClick);
   clickAmount+=autoClick
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
 }
 //存檔(每一分鐘)
