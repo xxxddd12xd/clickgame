@@ -25,7 +25,7 @@ class App extends React.Component{
       <div>
       <Left title="左邊"/>
       <MyCard title="點擊區" text={clickAmount} auto={autoClick}/>
-      <Upgrades title="升級" autoPerSec={autoPerSec} detail={costList}/>
+      <Upgrades title="升級" autoPerSec={autoPerSec} cost={costList}/>
       <Footer></Footer>
       </div>
     )
@@ -38,6 +38,16 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+//查看升級狀態
+function checkUpgradeStatus(i){
+ if(i<upgrade_status){
+   return (upgrade_status)
+ }
+ else{
+   return i
+ }
+}
 
 //查看當前升級狀態後顯示對應升級進度
 function checkUpgrade(){
@@ -68,6 +78,7 @@ document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("clic
   document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
 })
+
 //自動屁升級1
 document.querySelectorAll(".upgradeButton")[0].addEventListener("click",function(){
   autoClick+=1

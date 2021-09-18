@@ -4,6 +4,13 @@ import Apple from'./apple.png'
 import Shop  from'./shop.png'
 import ItemShop from'./ItemShop.png';
 import Upgrade_detail_context from'./Upgrade_detail_context.json';
+import Upgrade0 from'./Upgrade0.png'
+import Upgrade1 from'./Upgrade1.png'
+import Upgrade2 from'./Upgrade2.png'
+import Upgrade3 from'./Upgrade3.png'
+import Upgrade4 from'./Upgrade4.png'
+import Upgrade5 from'./Upgrade5.png'
+
 
 
 function Left(props) {
@@ -69,8 +76,9 @@ class Upgrade_detail extends React.Component{
       <Card className="upgrade_detail d-none"style={{ backgroundColor:'gray' }}>
         <div className="container"style={{ height: '30px' }}>
           <div className="row">
+            <div  className="col-sm"><img src={this.props.img} style={{ height: '32px', width: '32px' }}></img></div>
             <div  className="col-sm">{this.props.test.name}</div>
-            <div  className="col-sm cost">{this.props.detail}ϝ</div>
+            <div  className="col-sm cost">{this.props.cost}ϝ</div>
             <div  className="col-sm-2">
               <Button type="button"className="col p-1 btn-sm upgradeButton"variant="primary">Buy</Button>
             </div>
@@ -96,13 +104,12 @@ class Upgrades extends React.Component{
               自己屁自己不夠，需要打手?
             </Card.Text>
             <Container className="upgradeContainer">
-              <Upgrade_detail test={Upgrade_detail_context[0]}order={this.props.autoPerSec[0]} detail={this.props.detail[0]}/>
-              <Upgrade_detail test={Upgrade_detail_context[1]}order={this.props.autoPerSec[1]} detail={this.props.detail[1]}/>
-              <Upgrade_detail test={Upgrade_detail_context[2]}order={this.props.autoPerSec[2]} detail={this.props.detail[2]}/>
-              <Upgrade_detail test={Upgrade_detail_context[3]}order={this.props.autoPerSec[3]} detail={this.props.detail[3]}/>
-              <Upgrade_detail test={Upgrade_detail_context[4]}order={this.props.autoPerSec[4]} detail={this.props.detail[4]}/>
-              <Upgrade_detail test={Upgrade_detail_context[5]}order={this.props.autoPerSec[5]} detail={this.props.detail[5]}/>
-              <Upgrade_detail test={Upgrade_detail_context[6]}order={this.props.autoPerSec[6]} detail={this.props.detail[6]}/>
+              <Upgrade_detail img={Upgrade0}test={Upgrade_detail_context[0]}order={this.props.autoPerSec[0]} cost={this.props.cost[0]}/>
+              <Upgrade_detail img={Upgrade1}test={Upgrade_detail_context[1]}order={this.props.autoPerSec[1]} cost={this.props.cost[1]}/>
+              <Upgrade_detail img={Upgrade2}test={Upgrade_detail_context[2]}order={this.props.autoPerSec[2]} cost={this.props.cost[2]}/>
+              <Upgrade_detail img={Upgrade3}test={Upgrade_detail_context[3]}order={this.props.autoPerSec[3]} cost={this.props.cost[3]}/>
+              <Upgrade_detail img={Upgrade4}test={Upgrade_detail_context[4]}order={this.props.autoPerSec[4]} cost={this.props.cost[4]}/>
+              <Upgrade_detail img={Upgrade5}test={Upgrade_detail_context[5]}order={this.props.autoPerSec[5]} cost={this.props.cost[5]}/>
             </Container>
           </Card.Body>
       </Card>
