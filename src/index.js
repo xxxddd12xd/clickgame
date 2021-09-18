@@ -8,15 +8,15 @@ try{
   var autoClick=JSON.parse(document.cookie)[0].autoClick
   var upgrade_status=JSON.parse(document.cookie)[0].upgrade_status
   var costList=JSON.parse(document.cookie)[0].costList
-  var autoPerSec=[1,2,8,47]
+  var autoPerSec=[1,2,8,47,260,1400,7800]
 }
 catch(e)
 {
   clickAmount=0
   autoClick=0
   upgrade_status=0
-  costList=[15,100,1100,12000]
-  autoPerSec=[1,2,8,47]
+  costList=[15,100,1100,12000,130000,1400000]
+  autoPerSec=[1,2,8,47,260,1400,7800]
 }
 
 class App extends React.Component{
@@ -104,6 +104,31 @@ document.querySelectorAll(".upgradeButton")[2].addEventListener("click",function
   document.querySelectorAll(".upgrade_detail")[3].classList.remove("d-none")
 })
 
+//自動屁升級4
+document.querySelectorAll(".upgradeButton")[3].addEventListener("click",function(){
+  autoClick+=47
+  upgrade_status=4
+  clickAmount-=costList[3]
+  costList[3]=Math.ceil(costList[3]*1.15)
+  document.querySelectorAll(".cost")[3].innerText=costList[3]+'ϝ'
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  ifCanUpgrade()
+  document.querySelectorAll(".upgrade_detail")[4].classList.remove("d-none")
+})
+
+//自動屁升級5
+document.querySelectorAll(".upgradeButton")[4].addEventListener("click",function(){
+  autoClick+=260
+  upgrade_status=5
+  clickAmount-=costList[4]
+  costList[4]=Math.ceil(costList[4]*1.15)
+  document.querySelectorAll(".cost")[4].innerText=costList[4]+'ϝ'
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  ifCanUpgrade()
+  document.querySelectorAll(".upgrade_detail")[5].classList.remove("d-none")
+})
+
+
 //自動屁
 var clicksPerSecond = setInterval(myAlert, 1000);
 function myAlert() {
@@ -113,7 +138,7 @@ function myAlert() {
   ifCanUpgrade()
 }
 //存檔(每一分鐘)
-var saveTimer= setInterval(save,60000)
+var saveTimer= setInterval(save,6000)
 function save(){
   var info=[{clickAmount:clickAmount,autoClick:autoClick,upgrade_status:upgrade_status,costList:costList}]
   var info_json=JSON.stringify(info)
