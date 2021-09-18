@@ -1,21 +1,22 @@
 {
   "files": {
     "main.css": "/clickgame/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/clickgame/static/js/main.1adf3db7.chunk.js",
-    "main.js.map": "/clickgame/static/js/main.1adf3db7.chunk.js.map",
+    "main.js": "/clickgame/static/js/main.5cd7537c.chunk.js",
+    "main.js.map": "/clickgame/static/js/main.5cd7537c.chunk.js.map",
     "runtime-main.js": "/clickgame/static/js/runtime-main.13d14c4b.js",
     "runtime-main.js.map": "/clickgame/static/js/runtime-main.13d14c4b.js.map",
-    "static/js/2.87bc788e.chunk.js": "/clickgame/static/js/2.87bc788e.chunk.js",
-    "static/js/2.87bc788e.chunk.js.map": "/clickgame/static/js/2.87bc788e.chunk.js.map",
+    "static/js/2.0633ddf3.chunk.js": "/clickgame/static/js/2.0633ddf3.chunk.js",
+    "static/js/2.0633ddf3.chunk.js.map": "/clickgame/static/js/2.0633ddf3.chunk.js.map",
     "index.html": "/clickgame/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/clickgame/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.87bc788e.chunk.js.LICENSE.txt": "/clickgame/static/js/2.87bc788e.chunk.js.LICENSE.txt",
+    "static/js/2.0633ddf3.chunk.js.LICENSE.txt": "/clickgame/static/js/2.0633ddf3.chunk.js.LICENSE.txt",
+    "static/media/ItemShop.f7555c49.png": "/clickgame/static/media/ItemShop.f7555c49.png",
     "static/media/shop.99e517e8.png": "/clickgame/static/media/shop.99e517e8.png"
   },
   "entrypoints": [
     "static/js/runtime-main.13d14c4b.js",
-    "static/js/2.87bc788e.chunk.js",
+    "static/js/2.0633ddf3.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.1adf3db7.chunk.js"
+    "static/js/main.5cd7537c.chunk.js"
   ]
 }
