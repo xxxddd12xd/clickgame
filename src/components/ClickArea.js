@@ -100,7 +100,7 @@ class Upgrades extends React.Component{
         <Card.Img variant="top" src={Shop}/>
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
-            <Card.Text class="text-light">
+            <Card.Text className="text-light">
               自己屁自己不夠，需要打手?
             </Card.Text>
             <Container className="upgradeContainer">

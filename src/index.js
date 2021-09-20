@@ -89,12 +89,10 @@ document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mous
 document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("click",function(){
   clickAmount=parseInt(clickAmount,10)
   clickAmount+=1
-  document.getElementById('sound1').pause();
   document.getElementById('sound1').currentTime = 0;
   document.getElementById('sound1').play()
   document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
-  console.log(checkUpgradeStatus(1))
 })
 
 //自動屁升級1
