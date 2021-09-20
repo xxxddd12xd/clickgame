@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {Left,MyCard,Upgrades,Footer} from './components/ClickArea';
 import BonkSoundEffect from './Bonk.mp3'
-
+import Bonk1 from'./bonk1.png'
+import Bonk2 from'./bonk2.png'
 
 
 try{
@@ -75,6 +76,13 @@ function ifCanUpgrade(){
   }
 }
 
+//Bonk動畫
+document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mousedown",function(){
+  document.querySelector(".bonk").src=Bonk2
+})
+document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mouseup",function(){
+  document.querySelector(".bonk").src=Bonk1
+})
 
 
 //點擊

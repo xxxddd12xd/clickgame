@@ -11,7 +11,6 @@ import Upgrade3 from'./Upgrade3.png'
 import Upgrade4 from'./Upgrade4.png'
 import Upgrade5 from'./Upgrade5.png'
 import Bonk1 from'./bonk1.png'
-import Bonk2 from'./bonk2.png'
 
 
 function Left(props) {
@@ -47,7 +46,7 @@ function MyCard(props) {
   return(
     <div className={"h-100 d-inline-block text-light"} style={{width: '33%'}}>
       <Card style={{ width: '100%' ,backgroundColor:'rgb(18,53,79)'}}>
-          <Card.Img src={Bonk1}/>
+          <Card.Img className={"bonk"}src={Bonk1}/>
           <Card.Body>
           <Card.Title>{props.title}</Card.Title>
           <Card.Text>
