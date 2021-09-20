@@ -12,7 +12,6 @@ import Upgrade4 from'./Upgrade4.png'
 import Upgrade5 from'./Upgrade5.png'
 import Bonk1 from'./bonk1.png'
 import Bonk2 from'./bonk2.png'
-import BonkSoundEffect from './Bonk.mp3'
 
 
 function Left(props) {

@@ -86,12 +86,13 @@ document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("clic
   document.getElementById('sound1').play()
   document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
   ifCanUpgrade()
+  console.log(checkUpgradeStatus(1))
 })
 
 //自動屁升級1
 document.querySelectorAll(".upgradeButton")[0].addEventListener("click",function(){
   autoClick+=1
-  upgrade_status=1
+  upgrade_status=checkUpgradeStatus(1)
   ownedUpgrade[0]+=1
   clickAmount-=costList[0]
   costList[0]=Math.ceil(costList[0]*1.15)
@@ -105,7 +106,7 @@ document.querySelectorAll(".upgradeButton")[0].addEventListener("click",function
 //自動屁升級2
 document.querySelectorAll(".upgradeButton")[1].addEventListener("click",function(){
   autoClick+=2
-  upgrade_status=2
+  upgrade_status=checkUpgradeStatus(2)
   ownedUpgrade[1]+=1
   clickAmount-=costList[1]
   costList[1]=Math.ceil(costList[1]*1.15)
@@ -119,7 +120,7 @@ document.querySelectorAll(".upgradeButton")[1].addEventListener("click",function
 //自動屁升級3
 document.querySelectorAll(".upgradeButton")[2].addEventListener("click",function(){
   autoClick+=8
-  upgrade_status=3
+  upgrade_status=checkUpgradeStatus(3)
   ownedUpgrade[2]+=1
   clickAmount-=costList[2]
   costList[2]=Math.ceil(costList[2]*1.15)
@@ -133,7 +134,7 @@ document.querySelectorAll(".upgradeButton")[2].addEventListener("click",function
 //自動屁升級4
 document.querySelectorAll(".upgradeButton")[3].addEventListener("click",function(){
   autoClick+=47
-  upgrade_status=4
+  upgrade_status=checkUpgradeStatus(4)
   ownedUpgrade[3]+=1
   clickAmount-=costList[3]
   costList[3]=Math.ceil(costList[3]*1.15)
@@ -147,7 +148,7 @@ document.querySelectorAll(".upgradeButton")[3].addEventListener("click",function
 //自動屁升級5
 document.querySelectorAll(".upgradeButton")[4].addEventListener("click",function(){
   autoClick+=260
-  upgrade_status=5
+  upgrade_status=checkUpgradeStatus(5)
   ownedUpgrade[4]+=1
   clickAmount-=costList[4]
   costList[4]=Math.ceil(costList[4]*1.15)
