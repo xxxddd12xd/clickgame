@@ -5,11 +5,18 @@ import Shop  from'./shop.png'
 import ItemShop from'./ItemShop.png';
 import Upgrade_detail_context from'./Upgrade_detail_context.json';
 import Upgrade0 from'./Upgrade0.png'
+import Upgrade0_1 from'./Upgrade0_1.png'
 import Upgrade1 from'./Upgrade1.png'
+import Upgrade1_1 from'./Upgrade1_1.png'
 import Upgrade2 from'./Upgrade2.png'
+import Upgrade2_1 from'./Upgrade2_1.png'
 import Upgrade3 from'./Upgrade3.png'
+import Upgrade3_1 from'./Upgrade3_1.png'
 import Upgrade4 from'./Upgrade4.png'
+import Upgrade4_1 from'./Upgrade4_1.png'
 import Upgrade5 from'./Upgrade5.png'
+import Upgrade6 from'./Upgrade6.png'
+import Upgrade7 from'./Upgrade7.png'
 import Bonk1 from'./bonk1.png'
 
 
@@ -19,23 +26,19 @@ function Left(props) {
       <Card style={{ width: '100%',backgroundColor:'rgb(115,92,64)'}}>
         <Card.Img src={ItemShop}/>
         <Row>
-          <Col><img src={Apple}/></Col>
-          <Col><img src={Apple}/></Col>
-          <Col><img src={Apple}/></Col>
-          <Col><img src={Apple}/></Col>
-          <Col><img src={Apple}/></Col>
-        </Row>
-        <Row>
-          <Col><img src={Apple}/></Col>
-          <Col><img src={Apple}/></Col>
-          <Col><img src={Apple}/></Col>
-          <Col><img src={Apple}/></Col>
-          <Col><img src={Apple}/></Col>
+          <Col>
+          <img src={Upgrade0_1}/>
+          <img src={Upgrade1_1}/>
+          <img src={Upgrade1_1}/>
+          <img src={Upgrade1_1}/>
+          <img src={Upgrade1_1}/>
+          <img src={Upgrade1_1}/>
+          <img src={Upgrade1_1}/>
+          </Col>
         </Row>
         <Card.Body>
           <Card.Title>{props.title}</Card.Title>
           <Card.Text>還沒想到</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
     </div>
@@ -110,6 +113,7 @@ class Upgrades extends React.Component{
               <Upgrade_detail img={Upgrade3}test={Upgrade_detail_context[3]}order={this.props.autoPerSec[3]} cost={this.props.cost[3]}ownedUpgrade={this.props.ownedUpgrade[3]}/>
               <Upgrade_detail img={Upgrade4}test={Upgrade_detail_context[4]}order={this.props.autoPerSec[4]} cost={this.props.cost[4]}ownedUpgrade={this.props.ownedUpgrade[4]}/>
               <Upgrade_detail img={Upgrade5}test={Upgrade_detail_context[5]}order={this.props.autoPerSec[5]} cost={this.props.cost[5]}ownedUpgrade={this.props.ownedUpgrade[5]}/>
+              <Upgrade_detail img={Upgrade6}test={Upgrade_detail_context[6]}order={this.props.autoPerSec[6]} cost={this.props.cost[6]}ownedUpgrade={this.props.ownedUpgrade[6]}/>
             </Container>
           </Card.Body>
       </Card>
