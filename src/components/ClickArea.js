@@ -19,6 +19,21 @@ import Upgrade6 from'./Upgrade6.png'
 import Upgrade7 from'./Upgrade7.png'
 import Bonk1 from'./bonk1.png'
 
+function Enchant(props){
+  return(
+    <OverlayTrigger placement="right" overlay={
+      <Popover id="popover-enchant">
+      <Popover.Header as="h3">{props.title}</Popover.Header>
+      <Popover.Body>
+        {props.text}
+      </Popover.Body>
+    </Popover>
+    }>
+    <img className={props.className} src={props.id}/>
+    </OverlayTrigger>
+  )
+}
+
 
 function Left(props) {
   return(
@@ -27,18 +42,13 @@ function Left(props) {
         <Card.Img src={ItemShop}/>
         <Row>
           <Col>
-          <img src={Upgrade0_1}/>
-          <img src={Upgrade1_1}/>
-          <img src={Upgrade1_1}/>
-          <img src={Upgrade1_1}/>
-          <img src={Upgrade1_1}/>
-          <img src={Upgrade1_1}/>
-          <img src={Upgrade1_1}/>
+          <Enchant id={Upgrade0_1} className={"Upgrade0_1 d-none"} title={"更強路人"}text={"路人屁你的效率翻倍"}/>
+          <Enchant id={Upgrade1_1} className={"Upgrade1_1 d-none"} title={"更強酸民"}text={"網路酸民屁你的效率翻倍"}/>
           </Col>
         </Row>
         <Card.Body>
           <Card.Title>{props.title}</Card.Title>
-          <Card.Text>還沒想到</Card.Text>
+          <Card.Text>人人有功練</Card.Text>
         </Card.Body>
       </Card>
     </div>

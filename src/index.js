@@ -14,6 +14,7 @@ try{
   var costList=JSON.parse(document.cookie)[0].costList
   var autoPerSec=[1,2,8,47,260,1400,7800,44000]
   var ownedUpgrade=JSON.parse(document.cookie)[0].ownedUpgrade
+  var ownedEnchant=JSON.parse(document.cookie)[0].ownedEnchant
   var nextSound=["sound1","sound2","sound3","sound4","sound5","sound6","sound7","sound8","sound9","sound10","sound11"]
 }
 catch(e)
@@ -24,6 +25,7 @@ catch(e)
   costList=[15,100,1100,12000,130000,1400000,20000000,330000000]
   autoPerSec=[1,2,8,47,260,1400,7800,44000]
   ownedUpgrade=[0,0,0,0,0,0,0,0]
+  ownedEnchant=[1,1,1,1,1,1,1]
   nextSound=["sound1","sound2","sound3","sound4","sound5","sound6","sound7","sound8","sound9","sound10","sound11"]
 }
 
@@ -57,6 +59,22 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+
+
+
+//查看是否有強化可用
+function availableEnchant()
+{
+  if(ownedUpgrade[0]>0&&ownedEnchant[0]==1)
+  {
+    document.querySelector(".Upgrade0_1").classList.remove("d-none")
+  }
+  if(ownedUpgrade[1]>0&&ownedEnchant[1]==1)
+  {
+    document.querySelector(".Upgrade1_1").classList.remove("d-none")
+  }
+}
 
 //查看升級狀態
 function checkUpgradeStatus(i){
@@ -98,6 +116,27 @@ function ifCanUpgrade(){
   }
 }
 
+function getAutoclick(){
+  autoClick=(autoPerSec[0]*ownedUpgrade[0]*ownedEnchant[0])+
+  (autoPerSec[1]*ownedUpgrade[1]*ownedEnchant[1])+
+  (autoPerSec[2]*ownedUpgrade[2]*ownedEnchant[2])+
+  (autoPerSec[3]*ownedUpgrade[3]*ownedEnchant[3])+
+  (autoPerSec[4]*ownedUpgrade[4]*ownedEnchant[4])+
+  (autoPerSec[5]*ownedUpgrade[5]*ownedEnchant[5])
+}
+
+//強化
+document.querySelector(".Upgrade0_1").addEventListener("click",function(){
+  document.querySelector(".Upgrade0_1").classList.add("d-none")
+  ownedEnchant[0]=2
+  getAutoclick()
+})
+document.querySelector(".Upgrade1_1").addEventListener("click",function(){
+  document.querySelector(".Upgrade1_1").classList.add("d-none")
+  ownedEnchant[1]=2
+  getAutoclick()
+})
+
 //Bonk動畫
 document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mousedown",function(){
   document.querySelector(".bonk").src=Bonk2
@@ -105,6 +144,7 @@ document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mous
 document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mouseup",function(){
   document.querySelector(".bonk").src=Bonk1
 })
+
 
 
 //點擊並發出bonk音效
@@ -126,15 +166,17 @@ document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("clic
 for(let i=0;i<document.querySelectorAll(".upgradeButton").length;i++)
 {
   document.querySelectorAll(".upgradeButton")[i].addEventListener("click",function(){
-    autoClick+=autoPerSec[i]
-    upgrade_status=checkUpgradeStatus(i+1)
     ownedUpgrade[i]+=1
+    getAutoclick()
+    console.log(autoPerSec[i]+";"+ownedUpgrade[i]+";"+ownedEnchant[i])
+    upgrade_status=checkUpgradeStatus(i+1)
     clickAmount-=costList[i]
     costList[i]=Math.ceil(costList[i]*1.15)
     document.querySelectorAll(".ownedUpgrade")[i].childNodes[1].textContent=ownedUpgrade[i]
     document.querySelectorAll(".cost")[i].innerText=costList[i]+'ϝ'
     document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
     ifCanUpgrade()
+    availableEnchant()
     try{
       document.querySelectorAll(".upgrade_detail")[i+1].classList.remove("d-none")
     }
@@ -151,12 +193,13 @@ function myAlert() {
   // console.log('1秒鐘到了！,每秒+'+autoClick);
   clickAmount+=autoClick
   document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  availableEnchant()
   ifCanUpgrade()
 }
 //存檔(每一分鐘)
 var saveTimer= setInterval(save,6000)
 function save(){
-  var info=[{clickAmount:clickAmount,autoClick:autoClick,upgrade_status:upgrade_status,costList:costList,ownedUpgrade:ownedUpgrade}]
+  var info=[{clickAmount:clickAmount,autoClick:autoClick,upgrade_status:upgrade_status,costList:costList,ownedUpgrade:ownedUpgrade,ownedEnchant:ownedEnchant}]
   var info_json=JSON.stringify(info)
   document.cookie=info_json+"; expires=Thu, 18 Dec 2022 12:00:00 GMT; path=/";
   console.log("saved!")
@@ -164,3 +207,4 @@ function save(){
 
 ifCanUpgrade()
 checkUpgrade()
+availableEnchant()
