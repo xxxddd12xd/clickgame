@@ -8,7 +8,7 @@ import Bonk2 from'./bonk2.png'
 
 
 try{
-  var clickAmount=parseInt()
+  var clickAmount=JSON.parse(document.cookie)[0].clickAmount
   var autoClick=JSON.parse(document.cookie)[0].autoClick
   var upgrade_status=JSON.parse(document.cookie)[0].upgrade_status
   var costList=JSON.parse(document.cookie)[0].costList
