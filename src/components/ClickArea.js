@@ -52,11 +52,11 @@ function Left(props) {
             <Card.Text>人人有功練</Card.Text>
             <Row>
               <Col className={"enchant"}>
-              <Enchant id={Upgrade0_1} className={"Upgrade0_1 d-none"} title={"更強路人"}text={"路人bonk你的效率翻倍"}/>
-              <Enchant id={Upgrade1_1} className={"Upgrade1_1 d-none"} title={"更強酸民"}text={"網路酸民bonk你的效率翻倍"}/>
-              <Enchant id={Upgrade2_1} className={"Upgrade2_1 d-none"} title={"更強8+9"}text={"8+9bonk你的效率翻倍"}/>
-              <Enchant id={Upgrade3_1} className={"Upgrade3_1 d-none"} title={"更強你朋友"}text={"你朋友bonk你的效率翻倍"}/>
-              <Enchant id={Upgrade4_1} className={"Upgrade4_1 d-none"} title={"更強家長"}text={"家長bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade0_1} className={"Upgrade0_1 d-none"} title={"更強路人(100ϝ)"}text={"路人bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade1_1} className={"Upgrade1_1 d-none"} title={"更強酸民(1000ϝ)"}text={"網路酸民bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade2_1} className={"Upgrade2_1 d-none"} title={"更強8+9(11000ϝ)"}text={"8+9bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade3_1} className={"Upgrade3_1 d-none"} title={"更強你朋友(120000ϝ)"}text={"你朋友bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade4_1} className={"Upgrade4_1 d-none"} title={"更強家長(1300000ϝ)"}text={"家長bonk你的效率翻倍"}/>
               </Col>
             </Row>
           </Tab>

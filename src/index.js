@@ -8,7 +8,7 @@ import Bonk2 from'./bonk2.png'
 
 
 try{
-  var clickAmount=JSON.parse(document.cookie)[0].clickAmount
+  var clickAmount=parseInt()
   var autoClick=JSON.parse(document.cookie)[0].autoClick
   var upgrade_status=JSON.parse(document.cookie)[0].upgrade_status
   var costList=JSON.parse(document.cookie)[0].costList
@@ -139,6 +139,7 @@ function ifCanUpgrade(){
   }
 }
 
+
 function getAutoclick(){
   autoClick=(autoPerSec[0]*ownedUpgrade[0]*ownedEnchant[0])+
   (autoPerSec[1]*ownedUpgrade[1]*ownedEnchant[1])+
@@ -238,12 +239,12 @@ for(let i=0;i<document.querySelectorAll(".upgradeButton").length;i++)
   })
 }
 
-//自動屁
-var clicksPerSecond = setInterval(myAlert, 1000);
+//自動屁(1秒一次)
+var clicksPerSecond = setInterval(myAlert, 100);
 function myAlert() {
   // console.log('1秒鐘到了！,每秒+'+autoClick);
-  clickAmount+=autoClick
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被bonk了"+clickAmount+"次"+",每秒自動bonk"+autoClick+"次";
+  clickAmount+=(autoClick/10)
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被bonk了"+parseInt(clickAmount,10)+"次"+",每秒自動bonk"+autoClick+"次";
   availableEnchant()
   ifCanUpgrade()
 }
