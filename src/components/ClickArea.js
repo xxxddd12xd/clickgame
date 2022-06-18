@@ -72,6 +72,7 @@ function Left(props) {
               <Enchant id={Upgrade4_1}className={"Upgraded4_1 d-none"} title={"更強家長"}text={"家長bonk你的效率翻倍"}/>
               </Col>
             </Row>
+            <Card.Text className={"small clickTimes"}>你手動Bonk了{props.clickTimes}次</Card.Text>
           </Tab>
         </Tabs>
 

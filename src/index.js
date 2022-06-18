@@ -9,6 +9,7 @@ import Bonk2 from'./bonk2.png'
 
 try{
   var clickAmount=JSON.parse(document.cookie)[0].clickAmount
+  var clickTimes=JSON.parse(document.cookie)[0].clickTimes
   var autoClick=JSON.parse(document.cookie)[0].autoClick
   var upgrade_status=JSON.parse(document.cookie)[0].upgrade_status
   var costList=JSON.parse(document.cookie)[0].costList
@@ -23,6 +24,7 @@ catch(e)
   clickAmount=0
   autoClick=0
   upgrade_status=0
+  clickTimes=0
   costList=[15,100,1100,12000,130000,1400000,20000000,330000000]
   autoPerSec=[1,2,8,47,260,1400,7800,44000]
   ownedUpgrade=[0,0,0,0,0,0,0,0]
@@ -53,7 +55,7 @@ class App extends React.Component{
       <audio id="sound9" src={BonkSoundEffect} preload="auto"></audio>
       <audio id="sound10" src={BonkSoundEffect} preload="auto"></audio>
       <audio id="sound11" src={BonkSoundEffect} preload="auto"></audio>
-      <Left title="強化"/>
+      <Left title="強化" clickTimes={clickTimes}/>
       <MyCard title="點擊區" text={clickAmount} auto={autoClick}/>
       <Upgrades title="升級" autoPerSec={autoPerSec_Enchanted} cost={costList}ownedUpgrade={ownedUpgrade}/>
       <Footer></Footer>
@@ -80,6 +82,7 @@ function profile()
       document.querySelector(".profile").childNodes[i].classList.remove("d-none")
     }
   }
+  document.querySelector(".clickTimes").innerText="你手動Bonk了"+clickTimes+"次"
 }
 //查看是否有強化可用
 function availableEnchant()
@@ -151,40 +154,64 @@ function getAutoclick(){
 
 //強化
 document.querySelector(".Upgrade0_1").addEventListener("click",function(){
-  document.querySelector(".Upgrade0_1").classList.add("d-none")
-  document.querySelector(".Upgraded0_1").classList.remove("d-none")
-  ownedEnchant[0]=2
-  autoPerSec_Enchanted[0]=autoPerSec[0]*ownedEnchant[0]
-  getAutoclick()
-  profile()
+  if(clickAmount>=100)
+  {
+    clickAmount-=100
+    document.querySelector(".Upgrade0_1").classList.add("d-none")
+    document.querySelector(".Upgraded0_1").classList.remove("d-none")
+    ownedEnchant[0]=2
+    autoPerSec_Enchanted[0]=autoPerSec[0]*ownedEnchant[0]
+    getAutoclick()
+    profile()
+  }
 })
 document.querySelector(".Upgrade1_1").addEventListener("click",function(){
-  document.querySelector(".Upgrade1_1").classList.add("d-none")
-  ownedEnchant[1]=2
-  autoPerSec_Enchanted[1]=autoPerSec[1]*ownedEnchant[1]
-  getAutoclick()
-  profile()
+  if(clickAmount>=1000)
+  {
+    clickAmount-=1000
+    document.querySelector(".Upgrade1_1").classList.add("d-none")
+    document.querySelector(".Upgraded1_1").classList.remove("d-none")
+    ownedEnchant[1]=2
+    autoPerSec_Enchanted[1]=autoPerSec[1]*ownedEnchant[1]
+    getAutoclick()
+    profile()
+  }
 })
 document.querySelector(".Upgrade2_1").addEventListener("click",function(){
-  document.querySelector(".Upgrade2_1").classList.add("d-none")
-  ownedEnchant[2]=2
-  autoPerSec_Enchanted[2]=autoPerSec[2]*ownedEnchant[2]
-  getAutoclick()
-  profile()
+  if(clickAmount>=11000)
+  {
+    clickAmount-=11000
+    document.querySelector(".Upgrade2_1").classList.add("d-none")
+    document.querySelector(".Upgraded2_1").classList.remove("d-none")
+    ownedEnchant[2]=2
+    autoPerSec_Enchanted[2]=autoPerSec[2]*ownedEnchant[2]
+    getAutoclick()
+    profile()
+  }
 })
 document.querySelector(".Upgrade3_1").addEventListener("click",function(){
-  document.querySelector(".Upgrade3_1").classList.add("d-none")
-  ownedEnchant[3]=2
-  autoPerSec_Enchanted[3]=autoPerSec[3]*ownedEnchant[3]
-  getAutoclick()
-  profile()
+  if(clickAmount>=120000)
+  {
+    clickAmount-=120000
+    document.querySelector(".Upgrade3_1").classList.add("d-none")
+    document.querySelector(".Upgraded3_1").classList.remove("d-none")
+    ownedEnchant[3]=2
+    autoPerSec_Enchanted[3]=autoPerSec[3]*ownedEnchant[3]
+    getAutoclick()
+    profile()
+  }
 })
 document.querySelector(".Upgrade4_1").addEventListener("click",function(){
-  document.querySelector(".Upgrade4_1").classList.add("d-none")
-  ownedEnchant[4]=2
-  autoPerSec_Enchanted[4]=autoPerSec[4]*ownedEnchant[4]
-  getAutoclick()
-  profile()
+  if(clickAmount>=1300000)
+  {
+    clickAmount-=1300000
+    document.querySelector(".Upgrade4_1").classList.add("d-none")
+    document.querySelector(".Upgraded4_1").classList.remove("d-none")
+    ownedEnchant[4]=2
+    autoPerSec_Enchanted[4]=autoPerSec[4]*ownedEnchant[4]
+    getAutoclick()
+    profile()
+  }
 })
 
 //Bonk動畫
@@ -196,6 +223,7 @@ document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mous
 document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mouseup",function(){
   document.querySelector(".bonk1").className='card-img bonk1'
   document.querySelector(".bonk2").className='card-img bonk2  d-none'
+  clickTimes+=1
 })
 
 
@@ -225,7 +253,7 @@ for(let i=0;i<document.querySelectorAll(".upgradeButton").length;i++)
     clickAmount-=costList[i]
     costList[i]=Math.ceil(costList[i]*1.15)
     document.querySelectorAll(".ownedUpgrade")[i].childNodes[1].textContent=ownedUpgrade[i]
-    document.querySelectorAll(".cost")[i].innerText=costList[i]+'ϝ'
+    document.querySelectorAll(".cost")[i].innerText=numberProcess(costList[i])+'ϝ'
     document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被bonk了"+clickAmount+"次"+",每秒自動bonk"+autoClick+"次";
     ifCanUpgrade()
     availableEnchant()
@@ -239,22 +267,45 @@ for(let i=0;i<document.querySelectorAll(".upgradeButton").length;i++)
   })
 }
 
-//自動屁(1秒一次)
+//大數轉換
+function numberProcess(num)
+{
+  if(num>=10000)
+  {
+    num/=10000
+    num=num.toFixed(3)
+    return(num+"萬")
+  }
+  else if(num>=1000000)
+  {
+    num/=1000000
+    num=num.toFixed(3)
+    return(num+"百萬")
+  }
+  else
+  {
+    num=parseInt(num,10)
+    return(num)
+  }
+}
+
+//自動屁(0.1秒一次)
 var clicksPerSecond = setInterval(myAlert, 100);
 function myAlert() {
   // console.log('1秒鐘到了！,每秒+'+autoClick);
   clickAmount+=(autoClick/10)
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被bonk了"+parseInt(clickAmount,10)+"次"+",每秒自動bonk"+autoClick+"次";
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被bonk了"+numberProcess(clickAmount)+"次"+",每秒自動bonk"+autoClick+"次";
   availableEnchant()
   ifCanUpgrade()
 }
 //存檔(每一分鐘)
 var saveTimer= setInterval(save,6000)
 function save(){
-  var info=[{clickAmount:clickAmount,autoClick:autoClick,upgrade_status:upgrade_status,costList:costList,ownedUpgrade:ownedUpgrade,ownedEnchant:ownedEnchant,autoPerSec_Enchanted:autoPerSec_Enchanted}]
+  var info=[{clickTimes:clickTimes,clickAmount:clickAmount,autoClick:autoClick,upgrade_status:upgrade_status,costList:costList,ownedUpgrade:ownedUpgrade,ownedEnchant:ownedEnchant,autoPerSec_Enchanted:autoPerSec_Enchanted}]
   var info_json=JSON.stringify(info)
   document.cookie=info_json+"; expires=Thu, 18 Dec 2022 12:00:00 GMT; path=/";
   console.log("saved!")
+  profile()
 }
 
 ifCanUpgrade()
