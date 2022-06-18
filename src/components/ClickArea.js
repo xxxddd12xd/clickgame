@@ -1,5 +1,5 @@
-import {Card,Button, Container,Tooltip,OverlayTrigger,Popover,Row,Col,Navbar} from 'react-bootstrap';
-import React from 'react';
+import {Card,Button,Tab,Tabs,Container,Tooltip,OverlayTrigger,Popover,Row,Col,Navbar} from 'react-bootstrap';
+import React,{ useState } from 'react';
 import Apple from'./apple.png'
 import Shop  from'./shop.png'
 import ItemShop from'./ItemShop.png';
@@ -18,6 +18,7 @@ import Upgrade5 from'./Upgrade5.png'
 import Upgrade6 from'./Upgrade6.png'
 import Upgrade7 from'./Upgrade7.png'
 import Bonk1 from'./bonk1.png'
+import Bonk2 from'./bonk2.png'
 
 function Enchant(props){
   return(
@@ -36,40 +37,74 @@ function Enchant(props){
 
 
 function Left(props) {
+  const [key, setKey] = useState('home');
   return(
     <div className={"h-100 d-inline-block"} style={{width: '33%'}}>
-      <Card style={{ width: '100%',backgroundColor:'rgb(115,92,64)'}}>
+      <Card style={{ width: '100%',backgroundColor:'rgb(18,53,79)'}}>
         <Card.Img src={ItemShop}/>
-        <Row>
-          <Col>
-          <Enchant id={Upgrade0_1} className={"Upgrade0_1 d-none"} title={"更強路人"}text={"路人屁你的效率翻倍"}/>
-          <Enchant id={Upgrade1_1} className={"Upgrade1_1 d-none"} title={"更強酸民"}text={"網路酸民屁你的效率翻倍"}/>
-          </Col>
-        </Row>
         <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
-          <Card.Text>人人有功練</Card.Text>
+        <Tabs 
+          activeKey={key}
+          onSelect={(k) => setKey(k)}
+        >
+          <Tab className="text-light"eventKey="home" title={props.title}>
+            <Card.Title>{props.title}</Card.Title>
+            <Card.Text>人人有功練</Card.Text>
+            <Row>
+              <Col>
+              <Enchant id={Upgrade0_1} className={"Upgrade0_1 d-none"} title={"更強路人"}text={"路人屁你的效率翻倍"}/>
+              <Enchant id={Upgrade1_1} className={"Upgrade1_1 d-none"} title={"更強酸民"}text={"網路酸民屁你的效率翻倍"}/>
+              <Enchant id={Upgrade2_1} className={"Upgrade2_1 d-none"} title={"更強8+9"}text={"8+9屁你的效率翻倍"}/>
+              <Enchant id={Upgrade3_1} className={"Upgrade3_1 d-none"} title={"更強你朋友"}text={"你朋友屁你的效率翻倍"}/>
+              </Col>
+            </Row>
+          </Tab>
+          <Tab className="text-light"eventKey="profile" title="統計">
+          <Card.Title>統計</Card.Title>
+          <Card.Text>哈佛大學</Card.Text>
+          </Tab>
+        </Tabs>
+
         </Card.Body>
       </Card>
     </div>
   )
 }
 
-function MyCard(props) {
-  return(
-    <div className={"h-100 d-inline-block text-light"} style={{width: '33%'}}>
-      <Card style={{ width: '100%' ,backgroundColor:'rgb(18,53,79)'}}>
-          <Card.Img className={"bonk"}src={Bonk1}/>
-          <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
-          <Card.Text>
-            你已經被屁了{props.text}次,每秒自動屁你{props.auto}次
-          </Card.Text>
-        <Button variant="primary">屁一下</Button>
-        </Card.Body>
-      </Card>
-    </div>
-  )
+class  MyCard extends React.Component{
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      
+    });
+  }
+  render(){
+    return(
+      <div className={"h-100 d-inline-block text-light"} style={{width: '33%'}}>
+        <Card style={{ width: '100%' ,backgroundColor:'rgb(18,53,79)'}}>
+            <Card.Img className={"bonk1"}src={Bonk1}/>
+            <Card.Img className={"bonk2 d-none"}src={Bonk2}/>
+            <Card.Body>
+            <Card.Title>{this.props.title}</Card.Title>
+            <Card.Text>
+              你已經被屁了{this.props.text}次,每秒自動屁你{this.props.auto}次
+            </Card.Text>
+          <Button variant="primary">屁一下</Button>
+          </Card.Body>
+        </Card>
+      </div>
+    )
+  }
 }
 
 
@@ -80,7 +115,7 @@ class Upgrade_detail extends React.Component{
     return(
     <OverlayTrigger placement="left" overlay={
       <Popover id="popover-basic">
-      <Popover.Header as="h3">每秒多屁{this.props.order}次</Popover.Header>
+      <Popover.Header as="h3">每個每秒屁{this.props.order}次</Popover.Header>
       <Popover.Body>
       {this.props.test.text}
       </Popover.Body>
@@ -106,6 +141,23 @@ class Upgrade_detail extends React.Component{
 
 
 class Upgrades extends React.Component{
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      
+    });
+  }
+
   render(){
     return(
       <div className={"h-100 d-inline-block text-light"} style={{width: '33%'}}>

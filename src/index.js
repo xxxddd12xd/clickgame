@@ -14,6 +14,7 @@ try{
   var costList=JSON.parse(document.cookie)[0].costList
   var autoPerSec=[1,2,8,47,260,1400,7800,44000]
   var ownedUpgrade=JSON.parse(document.cookie)[0].ownedUpgrade
+  var autoPerSec_Enchanted=JSON.parse(document.cookie)[0].autoPerSec_Enchanted
   var ownedEnchant=JSON.parse(document.cookie)[0].ownedEnchant
   var nextSound=["sound1","sound2","sound3","sound4","sound5","sound6","sound7","sound8","sound9","sound10","sound11"]
 }
@@ -26,6 +27,14 @@ catch(e)
   autoPerSec=[1,2,8,47,260,1400,7800,44000]
   ownedUpgrade=[0,0,0,0,0,0,0,0]
   ownedEnchant=[1,1,1,1,1,1,1]
+  autoPerSec_Enchanted=[
+    autoPerSec[0]*ownedEnchant[0],
+    autoPerSec[1]*ownedEnchant[1],
+    autoPerSec[2]*ownedEnchant[2],
+    autoPerSec[3]*ownedEnchant[3],
+    autoPerSec[4]*ownedEnchant[4],
+    autoPerSec[5]*ownedEnchant[5],
+    autoPerSec[6]*ownedEnchant[6]]
   nextSound=["sound1","sound2","sound3","sound4","sound5","sound6","sound7","sound8","sound9","sound10","sound11"]
 }
 
@@ -46,7 +55,7 @@ class App extends React.Component{
       <audio id="sound11" src={BonkSoundEffect} preload="auto"></audio>
       <Left title="強化"/>
       <MyCard title="點擊區" text={clickAmount} auto={autoClick}/>
-      <Upgrades title="升級" autoPerSec={autoPerSec} cost={costList}ownedUpgrade={ownedUpgrade}/>
+      <Upgrades title="升級" autoPerSec={autoPerSec_Enchanted} cost={costList}ownedUpgrade={ownedUpgrade}/>
       <Footer></Footer>
       </div>
     )
@@ -73,6 +82,14 @@ function availableEnchant()
   if(ownedUpgrade[1]>0&&ownedEnchant[1]==1)
   {
     document.querySelector(".Upgrade1_1").classList.remove("d-none")
+  }
+  if(ownedUpgrade[2]>0&&ownedEnchant[2]==1)
+  {
+    document.querySelector(".Upgrade2_1").classList.remove("d-none")
+  }
+  if(ownedUpgrade[3]>0&&ownedEnchant[3]==1)
+  {
+    document.querySelector(".Upgrade3_1").classList.remove("d-none")
   }
 }
 
@@ -129,20 +146,37 @@ function getAutoclick(){
 document.querySelector(".Upgrade0_1").addEventListener("click",function(){
   document.querySelector(".Upgrade0_1").classList.add("d-none")
   ownedEnchant[0]=2
+  autoPerSec_Enchanted[0]=autoPerSec[0]*ownedEnchant[0]
   getAutoclick()
 })
 document.querySelector(".Upgrade1_1").addEventListener("click",function(){
   document.querySelector(".Upgrade1_1").classList.add("d-none")
   ownedEnchant[1]=2
+  autoPerSec_Enchanted[1]=autoPerSec[1]*ownedEnchant[1]
+  getAutoclick()
+})
+document.querySelector(".Upgrade2_1").addEventListener("click",function(){
+  document.querySelector(".Upgrade2_1").classList.add("d-none")
+  ownedEnchant[2]=2
+  autoPerSec_Enchanted[2]=autoPerSec[2]*ownedEnchant[2]
+  getAutoclick()
+})
+document.querySelector(".Upgrade3_1").addEventListener("click",function(){
+  document.querySelector(".Upgrade3_1").classList.add("d-none")
+  ownedEnchant[3]=2
+  autoPerSec_Enchanted[3]=autoPerSec[3]*ownedEnchant[3]
   getAutoclick()
 })
 
 //Bonk動畫
 document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mousedown",function(){
-  document.querySelector(".bonk").src=Bonk2
+  document.querySelector(".bonk1").className='card-img bonk1 d-none'
+  document.querySelector(".bonk2").className='card-img bonk2'
+
 })
 document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mouseup",function(){
-  document.querySelector(".bonk").src=Bonk1
+  document.querySelector(".bonk1").className='card-img bonk1'
+  document.querySelector(".bonk2").className='card-img bonk2  d-none'
 })
 
 
@@ -168,7 +202,6 @@ for(let i=0;i<document.querySelectorAll(".upgradeButton").length;i++)
   document.querySelectorAll(".upgradeButton")[i].addEventListener("click",function(){
     ownedUpgrade[i]+=1
     getAutoclick()
-    console.log(autoPerSec[i]+";"+ownedUpgrade[i]+";"+ownedEnchant[i])
     upgrade_status=checkUpgradeStatus(i+1)
     clickAmount-=costList[i]
     costList[i]=Math.ceil(costList[i]*1.15)
@@ -199,7 +232,7 @@ function myAlert() {
 //存檔(每一分鐘)
 var saveTimer= setInterval(save,6000)
 function save(){
-  var info=[{clickAmount:clickAmount,autoClick:autoClick,upgrade_status:upgrade_status,costList:costList,ownedUpgrade:ownedUpgrade,ownedEnchant:ownedEnchant}]
+  var info=[{clickAmount:clickAmount,autoClick:autoClick,upgrade_status:upgrade_status,costList:costList,ownedUpgrade:ownedUpgrade,ownedEnchant:ownedEnchant,autoPerSec_Enchanted:autoPerSec_Enchanted}]
   var info_json=JSON.stringify(info)
   document.cookie=info_json+"; expires=Thu, 18 Dec 2022 12:00:00 GMT; path=/";
   console.log("saved!")
