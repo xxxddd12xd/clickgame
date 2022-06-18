@@ -15,10 +15,33 @@ import Upgrade3_1 from'./Upgrade3_1.png'
 import Upgrade4 from'./Upgrade4.png'
 import Upgrade4_1 from'./Upgrade4_1.png'
 import Upgrade5 from'./Upgrade5.png'
+import Upgrade5_1 from'./Upgrade5_1.png'
 import Upgrade6 from'./Upgrade6.png'
 import Upgrade7 from'./Upgrade7.png'
 import Bonk1 from'./bonk1.png'
 import Bonk2 from'./bonk2.png'
+
+//大數轉換
+function numberProcess(num)
+{
+  if(num>=1000000)
+  {
+    num/=1000000
+    num=num.toFixed(3)
+    return(num+"M")
+  }
+  else if(num>=10000)
+  {
+    num/=1000
+    num=num.toFixed(3)
+    return(num+"K")
+  }
+  else
+  {
+    num=parseInt(num,10)
+    return(num)
+  }
+}
 
 function Enchant(props){
   return(
@@ -57,6 +80,7 @@ function Left(props) {
               <Enchant id={Upgrade2_1} className={"Upgrade2_1 d-none"} title={"更強8+9(11000ϝ)"}text={"8+9bonk你的效率翻倍"}/>
               <Enchant id={Upgrade3_1} className={"Upgrade3_1 d-none"} title={"更強你朋友(120000ϝ)"}text={"你朋友bonk你的效率翻倍"}/>
               <Enchant id={Upgrade4_1} className={"Upgrade4_1 d-none"} title={"更強家長(1300000ϝ)"}text={"家長bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade5_1} className={"Upgrade5_1 d-none"} title={"更強正義魔人(14000000ϝ)"}text={"正義魔人bonk你的效率翻倍"}/>
               </Col>
             </Row>
           </Tab>
@@ -70,6 +94,7 @@ function Left(props) {
               <Enchant id={Upgrade2_1}className={"Upgraded2_1 d-none"} title={"更強8+9"}text={"8+9bonk你的效率翻倍"}/>
               <Enchant id={Upgrade3_1}className={"Upgraded3_1 d-none"} title={"更強你朋友"}text={"你朋友bonk你的效率翻倍"}/>
               <Enchant id={Upgrade4_1}className={"Upgraded4_1 d-none"} title={"更強家長"}text={"家長bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade5_1}className={"Upgraded5_1 d-none"} title={"更強正義魔人"}text={"正義魔人bonk你的效率翻倍"}/>
               </Col>
             </Row>
             <Card.Text className={"small clickTimes"}>你手動Bonk了{props.clickTimes}次</Card.Text>
@@ -137,7 +162,7 @@ class Upgrade_detail extends React.Component{
           <div className="row">
             <div  className="col-sm ownedUpgrade"><img src={this.props.img} style={{ height: '32px', width: '32px' }}></img>{this.props.ownedUpgrade}</div>
             <div  className="col-sm">{this.props.test.name}</div>
-            <div  className="col-sm cost">{this.props.cost}ϝ</div>
+            <div  className="col-sm cost small">{this.props.cost}ϝ</div>
             <div  className="col-sm-2">
               <Button type="button"className="col p-1 btn-sm upgradeButton"variant="primary">Buy</Button>
             </div>
@@ -180,13 +205,13 @@ class Upgrades extends React.Component{
               自己bonk自己不夠，需要打手?
             </Card.Text>
             <Container className="upgradeContainer">
-              <Upgrade_detail img={Upgrade0}test={Upgrade_detail_context[0]}order={this.props.autoPerSec[0]} cost={this.props.cost[0]}ownedUpgrade={this.props.ownedUpgrade[0]}/>
-              <Upgrade_detail img={Upgrade1}test={Upgrade_detail_context[1]}order={this.props.autoPerSec[1]} cost={this.props.cost[1]}ownedUpgrade={this.props.ownedUpgrade[1]}/>
-              <Upgrade_detail img={Upgrade2}test={Upgrade_detail_context[2]}order={this.props.autoPerSec[2]} cost={this.props.cost[2]}ownedUpgrade={this.props.ownedUpgrade[2]}/>
-              <Upgrade_detail img={Upgrade3}test={Upgrade_detail_context[3]}order={this.props.autoPerSec[3]} cost={this.props.cost[3]}ownedUpgrade={this.props.ownedUpgrade[3]}/>
-              <Upgrade_detail img={Upgrade4}test={Upgrade_detail_context[4]}order={this.props.autoPerSec[4]} cost={this.props.cost[4]}ownedUpgrade={this.props.ownedUpgrade[4]}/>
-              <Upgrade_detail img={Upgrade5}test={Upgrade_detail_context[5]}order={this.props.autoPerSec[5]} cost={this.props.cost[5]}ownedUpgrade={this.props.ownedUpgrade[5]}/>
-              <Upgrade_detail img={Upgrade6}test={Upgrade_detail_context[6]}order={this.props.autoPerSec[6]} cost={this.props.cost[6]}ownedUpgrade={this.props.ownedUpgrade[6]}/>
+              <Upgrade_detail img={Upgrade0}test={Upgrade_detail_context[0]}order={this.props.autoPerSec[0]} cost={numberProcess(this.props.cost[0])}ownedUpgrade={this.props.ownedUpgrade[0]}/>
+              <Upgrade_detail img={Upgrade1}test={Upgrade_detail_context[1]}order={this.props.autoPerSec[1]} cost={numberProcess(this.props.cost[1])}ownedUpgrade={this.props.ownedUpgrade[1]}/>
+              <Upgrade_detail img={Upgrade2}test={Upgrade_detail_context[2]}order={this.props.autoPerSec[2]} cost={numberProcess(this.props.cost[2])}ownedUpgrade={this.props.ownedUpgrade[2]}/>
+              <Upgrade_detail img={Upgrade3}test={Upgrade_detail_context[3]}order={this.props.autoPerSec[3]} cost={numberProcess(this.props.cost[3])}ownedUpgrade={this.props.ownedUpgrade[3]}/>
+              <Upgrade_detail img={Upgrade4}test={Upgrade_detail_context[4]}order={this.props.autoPerSec[4]} cost={numberProcess(this.props.cost[4])}ownedUpgrade={this.props.ownedUpgrade[4]}/>
+              <Upgrade_detail img={Upgrade5}test={Upgrade_detail_context[5]}order={this.props.autoPerSec[5]} cost={numberProcess(this.props.cost[5])}ownedUpgrade={this.props.ownedUpgrade[5]}/>
+              <Upgrade_detail img={Upgrade6}test={Upgrade_detail_context[6]}order={this.props.autoPerSec[6]} cost={numberProcess(this.props.cost[6])}ownedUpgrade={this.props.ownedUpgrade[6]}/>
             </Container>
           </Card.Body>
       </Card>

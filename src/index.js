@@ -213,6 +213,18 @@ document.querySelector(".Upgrade4_1").addEventListener("click",function(){
     profile()
   }
 })
+document.querySelector(".Upgrade5_1").addEventListener("click",function(){
+  if(clickAmount>=14000000)
+  {
+    clickAmount-=14000000
+    document.querySelector(".Upgrade5_1").classList.add("d-none")
+    document.querySelector(".Upgraded5_1").classList.remove("d-none")
+    ownedEnchant[5]=2
+    autoPerSec_Enchanted[5]=autoPerSec[5]*ownedEnchant[5]
+    getAutoclick()
+    profile()
+  }
+})
 
 //Bonk動畫
 document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("mousedown",function(){
@@ -270,17 +282,17 @@ for(let i=0;i<document.querySelectorAll(".upgradeButton").length;i++)
 //大數轉換
 function numberProcess(num)
 {
-  if(num>=10000)
-  {
-    num/=10000
-    num=num.toFixed(3)
-    return(num+"萬")
-  }
-  else if(num>=1000000)
+  if(num>=1000000)
   {
     num/=1000000
     num=num.toFixed(3)
-    return(num+"百萬")
+    return(num+"M")
+  }
+  else if(num>=10000)
+  {
+    num/=1000
+    num=num.toFixed(3)
+    return(num+"K")
   }
   else
   {
