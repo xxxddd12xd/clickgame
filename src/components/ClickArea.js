@@ -51,17 +51,27 @@ function Left(props) {
             <Card.Title>{props.title}</Card.Title>
             <Card.Text>人人有功練</Card.Text>
             <Row>
-              <Col>
-              <Enchant id={Upgrade0_1} className={"Upgrade0_1 d-none"} title={"更強路人"}text={"路人屁你的效率翻倍"}/>
-              <Enchant id={Upgrade1_1} className={"Upgrade1_1 d-none"} title={"更強酸民"}text={"網路酸民屁你的效率翻倍"}/>
-              <Enchant id={Upgrade2_1} className={"Upgrade2_1 d-none"} title={"更強8+9"}text={"8+9屁你的效率翻倍"}/>
-              <Enchant id={Upgrade3_1} className={"Upgrade3_1 d-none"} title={"更強你朋友"}text={"你朋友屁你的效率翻倍"}/>
+              <Col className={"enchant"}>
+              <Enchant id={Upgrade0_1} className={"Upgrade0_1 d-none"} title={"更強路人"}text={"路人bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade1_1} className={"Upgrade1_1 d-none"} title={"更強酸民"}text={"網路酸民bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade2_1} className={"Upgrade2_1 d-none"} title={"更強8+9"}text={"8+9bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade3_1} className={"Upgrade3_1 d-none"} title={"更強你朋友"}text={"你朋友bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade4_1} className={"Upgrade4_1 d-none"} title={"更強家長"}text={"家長bonk你的效率翻倍"}/>
               </Col>
             </Row>
           </Tab>
           <Tab className="text-light"eventKey="profile" title="統計">
           <Card.Title>統計</Card.Title>
-          <Card.Text>哈佛大學</Card.Text>
+          <Card.Text>已有強化</Card.Text>
+          <Row>
+              <Col className={"profile"}>
+              <Enchant id={Upgrade0_1}className={"Upgraded0_1 d-none"} title={"更強路人"}text={"路人bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade1_1}className={"Upgraded1_1 d-none"} title={"更強酸民"}text={"網路酸民bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade2_1}className={"Upgraded2_1 d-none"} title={"更強8+9"}text={"8+9bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade3_1}className={"Upgraded3_1 d-none"} title={"更強你朋友"}text={"你朋友bonk你的效率翻倍"}/>
+              <Enchant id={Upgrade4_1}className={"Upgraded4_1 d-none"} title={"更強家長"}text={"家長bonk你的效率翻倍"}/>
+              </Col>
+            </Row>
           </Tab>
         </Tabs>
 
@@ -97,9 +107,9 @@ class  MyCard extends React.Component{
             <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
             <Card.Text>
-              你已經被屁了{this.props.text}次,每秒自動屁你{this.props.auto}次
+              你已經被bonk了{this.props.text}次,每秒自動bonk你{this.props.auto}次
             </Card.Text>
-          <Button variant="primary">屁一下</Button>
+          <Button variant="primary">Bonk</Button>
           </Card.Body>
         </Card>
       </div>
@@ -115,7 +125,7 @@ class Upgrade_detail extends React.Component{
     return(
     <OverlayTrigger placement="left" overlay={
       <Popover id="popover-basic">
-      <Popover.Header as="h3">每個每秒屁{this.props.order}次</Popover.Header>
+      <Popover.Header as="h3">每個每秒bonk{this.props.order}次</Popover.Header>
       <Popover.Body>
       {this.props.test.text}
       </Popover.Body>
@@ -166,7 +176,7 @@ class Upgrades extends React.Component{
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
             <Card.Text className="text-light">
-              自己屁自己不夠，需要打手?
+              自己bonk自己不夠，需要打手?
             </Card.Text>
             <Container className="upgradeContainer">
               <Upgrade_detail img={Upgrade0}test={Upgrade_detail_context[0]}order={this.props.autoPerSec[0]} cost={this.props.cost[0]}ownedUpgrade={this.props.ownedUpgrade[0]}/>
@@ -189,10 +199,10 @@ class Footer extends React.Component{
     return(
       <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="https://github.com/xxxddd12xd">
           <img
             alt=""
-            src="/logo.svg"
+            src="https://cdn.discordapp.com/avatars/404541883810054144/e5dc4a46503e2f8fccef18c53c472678.webp?size=48"
             width="30"
             height="30"
             className="d-inline-block align-top"

@@ -26,7 +26,7 @@ catch(e)
   costList=[15,100,1100,12000,130000,1400000,20000000,330000000]
   autoPerSec=[1,2,8,47,260,1400,7800,44000]
   ownedUpgrade=[0,0,0,0,0,0,0,0]
-  ownedEnchant=[1,1,1,1,1,1,1]
+  ownedEnchant=[1,1,1,1,1,1,1,1]
   autoPerSec_Enchanted=[
     autoPerSec[0]*ownedEnchant[0],
     autoPerSec[1]*ownedEnchant[1],
@@ -70,26 +70,32 @@ ReactDOM.render(
 );
 
 
-
-
+//統計
+function profile()
+{
+  for(var i=0;i<ownedEnchant.length;i++)
+  {
+    if(ownedEnchant[i]==2)
+    {
+      document.querySelector(".profile").childNodes[i].classList.remove("d-none")
+    }
+  }
+}
 //查看是否有強化可用
 function availableEnchant()
 {
-  if(ownedUpgrade[0]>0&&ownedEnchant[0]==1)
+  for(var i=0;i<ownedUpgrade.length;i++)
   {
-    document.querySelector(".Upgrade0_1").classList.remove("d-none")
-  }
-  if(ownedUpgrade[1]>0&&ownedEnchant[1]==1)
-  {
-    document.querySelector(".Upgrade1_1").classList.remove("d-none")
-  }
-  if(ownedUpgrade[2]>0&&ownedEnchant[2]==1)
-  {
-    document.querySelector(".Upgrade2_1").classList.remove("d-none")
-  }
-  if(ownedUpgrade[3]>0&&ownedEnchant[3]==1)
-  {
-    document.querySelector(".Upgrade3_1").classList.remove("d-none")
+    if(ownedUpgrade[i]>0&&ownedEnchant[i]==1)
+    {
+      try{
+        document.querySelector(".enchant").childNodes[i].classList.remove("d-none")
+      }
+      catch(e)
+      {
+        console.log(e)
+      }
+    }
   }
 }
 
@@ -145,27 +151,39 @@ function getAutoclick(){
 //強化
 document.querySelector(".Upgrade0_1").addEventListener("click",function(){
   document.querySelector(".Upgrade0_1").classList.add("d-none")
+  document.querySelector(".Upgraded0_1").classList.remove("d-none")
   ownedEnchant[0]=2
   autoPerSec_Enchanted[0]=autoPerSec[0]*ownedEnchant[0]
   getAutoclick()
+  profile()
 })
 document.querySelector(".Upgrade1_1").addEventListener("click",function(){
   document.querySelector(".Upgrade1_1").classList.add("d-none")
   ownedEnchant[1]=2
   autoPerSec_Enchanted[1]=autoPerSec[1]*ownedEnchant[1]
   getAutoclick()
+  profile()
 })
 document.querySelector(".Upgrade2_1").addEventListener("click",function(){
   document.querySelector(".Upgrade2_1").classList.add("d-none")
   ownedEnchant[2]=2
   autoPerSec_Enchanted[2]=autoPerSec[2]*ownedEnchant[2]
   getAutoclick()
+  profile()
 })
 document.querySelector(".Upgrade3_1").addEventListener("click",function(){
   document.querySelector(".Upgrade3_1").classList.add("d-none")
   ownedEnchant[3]=2
   autoPerSec_Enchanted[3]=autoPerSec[3]*ownedEnchant[3]
   getAutoclick()
+  profile()
+})
+document.querySelector(".Upgrade4_1").addEventListener("click",function(){
+  document.querySelector(".Upgrade4_1").classList.add("d-none")
+  ownedEnchant[4]=2
+  autoPerSec_Enchanted[4]=autoPerSec[4]*ownedEnchant[4]
+  getAutoclick()
+  profile()
 })
 
 //Bonk動畫
@@ -192,7 +210,7 @@ document.querySelectorAll(".card")[1].lastChild.lastChild.addEventListener("clic
     document.getElementById(nextSound[soundCount+1]).play()
     soundCount+=1
   }
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被bonk了"+clickAmount+"次"+",每秒自動bonk"+autoClick+"次";
   ifCanUpgrade()
 })
 
@@ -207,7 +225,7 @@ for(let i=0;i<document.querySelectorAll(".upgradeButton").length;i++)
     costList[i]=Math.ceil(costList[i]*1.15)
     document.querySelectorAll(".ownedUpgrade")[i].childNodes[1].textContent=ownedUpgrade[i]
     document.querySelectorAll(".cost")[i].innerText=costList[i]+'ϝ'
-    document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+    document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被bonk了"+clickAmount+"次"+",每秒自動bonk"+autoClick+"次";
     ifCanUpgrade()
     availableEnchant()
     try{
@@ -225,7 +243,7 @@ var clicksPerSecond = setInterval(myAlert, 1000);
 function myAlert() {
   // console.log('1秒鐘到了！,每秒+'+autoClick);
   clickAmount+=autoClick
-  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被屁了"+clickAmount+"次"+",每秒自動屁"+autoClick+"次";
+  document.querySelectorAll(".card")[1].lastChild.childNodes[1].innerHTML = "你已經被bonk了"+clickAmount+"次"+",每秒自動bonk"+autoClick+"次";
   availableEnchant()
   ifCanUpgrade()
 }
@@ -241,3 +259,4 @@ function save(){
 ifCanUpgrade()
 checkUpgrade()
 availableEnchant()
+profile()
